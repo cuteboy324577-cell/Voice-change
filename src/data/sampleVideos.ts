@@ -1,0 +1,242 @@
+import { LanguageOption, VoiceModel, DubbingJob, PipelineStep } from '../types';
+
+export const SUPPORTED_LANGUAGES: LanguageOption[] = [
+  { code: 'auto', name: 'Auto-Detect', nativeName: 'தானியங்கி கண்டறிதல்', flag: '🌐' },
+  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
+  { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'ja', name: 'Japanese', nativeName: '日本語', flag: '🇯🇵' },
+  { code: 'ko', name: 'Korean', nativeName: '한국어', flag: '🇰🇷' },
+  { code: 'zh', name: 'Chinese (Mandarin)', nativeName: '中文', flag: '🇨🇳' },
+  { code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷' },
+  { code: 'de', name: 'German', nativeName: 'Deutsch', flag: '🇩🇪' },
+  { code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' },
+  { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦' },
+  { code: 'ru', name: 'Russian', nativeName: 'Русский', flag: '🇷🇺' },
+  { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹' },
+];
+
+export const PIPELINE_STEPS_TEMPLATE: PipelineStep[] = [
+  { stepNumber: 1, title: 'Video Input Validation', description: 'Checking authorized source URL and file headers', status: 'pending' },
+  { stepNumber: 2, title: 'Metadata Extraction', description: 'Extracting video duration, framerate, resolution and audio channels', status: 'pending' },
+  { stepNumber: 3, title: 'Language Detection', description: 'Acoustic feature analysis & source language classification', status: 'pending' },
+  { stepNumber: 4, title: 'Audio Stream Demuxing', description: 'Separating video visual stream from multi-channel audio tracks', status: 'pending' },
+  { stepNumber: 5, title: 'Neural Speech Recognition', description: 'High-fidelity audio transcription with phonetic boundary tagging', status: 'pending' },
+  { stepNumber: 6, title: 'Speaker Diarization', description: 'Cluster-based voice profiling & multi-speaker distinction', status: 'pending' },
+  { stepNumber: 7, title: 'Timestamped Transcript Generation', description: 'Aligning spoken words with frame-accurate millisecond timestamps', status: 'pending' },
+  { stepNumber: 8, title: 'Natural Tamil Translation', description: 'Contextual translation into natural, idiomatic Tamil prose', status: 'pending' },
+  { stepNumber: 9, title: 'Translation Quality Verification', description: 'Evaluating BLEU metric, cultural phrasing, and lip-fit syllabic parity', status: 'pending' },
+  { stepNumber: 10, title: 'Tamil Neural Voice Synthesis', description: 'Generating Tamil speech audio with expressiveness & emotion', status: 'pending' },
+  { stepNumber: 11, title: 'Voice Similarity & Cloned Timbre', description: 'Preserving verified speaker acoustic timbre & resonance', status: 'pending' },
+  { stepNumber: 12, title: 'Temporal Audio Synchronization', description: 'Dynamic time-stretching & syllable matching to original cadence', status: 'pending' },
+  { stepNumber: 13, title: 'Original Dialogue Attenuation', description: 'AI spectral vocal subtraction while isolating ambiance and Foley', status: 'pending' },
+  { stepNumber: 14, title: 'Background Audio Mixing', description: 'Sidechain compression & surround-sound balancing of Tamil speech', status: 'pending' },
+  { stepNumber: 15, title: 'Bilingual Subtitle Generation', description: 'Exporting synchronized Tamil (தமிழ்) & English transliteration cues', status: 'pending' },
+  { stepNumber: 16, title: 'MP4 Video Remux & Rendering', description: 'Hardware-accelerated H.264 visual encoding with pristine Tamil audio', status: 'pending' },
+  { stepNumber: 17, title: 'Video Preview & Download Hub', description: 'Master package ready: MP4 video, Tamil MP3, SRT/VTT & QA report', status: 'pending' },
+];
+
+export const TAMIL_VOICES: VoiceModel[] = [
+  {
+    id: 'karthik',
+    name: 'Karthik',
+    tamilName: 'கார்த்திக்',
+    gender: 'male',
+    tone: 'Conversational & Engaging (Tech, Vlogs, Reviews)',
+    sampleAudioText: 'Hey everyone, welcome back to the channel. Today we are testing this new camera.',
+    sampleAudioTamil: 'அனைவருக்கும் வணக்கம்! மீண்டும் உங்கள் சேனலுக்கு வரவேற்கிறேன். இன்று புதிய கேமராவை சோதிக்கிறோம்.',
+    geminiVoice: 'Puck',
+    description: 'Natural modern Chennai Tamil male accent, perfect for YouTubers, tutorials, and tech reviews.',
+  },
+  {
+    id: 'meenakshi',
+    name: 'Meenakshi',
+    tamilName: 'மீனாட்சி',
+    gender: 'female',
+    tone: 'Warm, Expressive & Melodic (Stories, Lifestyle, Health)',
+    sampleAudioText: 'Nature preserves incredible harmony in the deepest forests of the world.',
+    sampleAudioTamil: 'இயற்கை உலகின் மிக ஆழமான காடுகளில் பிரமிக்க வைக்கும் நல்லிணக்கத்தைப் பாதுகாக்கிறது.',
+    geminiVoice: 'Kore',
+    description: 'Articulate, melodic female voice suitable for documentaries, lifestyle podcasts, and narratives.',
+  },
+  {
+    id: 'selvan',
+    name: 'Selvan',
+    tamilName: 'செல்வன்',
+    gender: 'male',
+    tone: 'Authoritative, Deep & Cinematic (Documentary, History)',
+    sampleAudioText: 'Thousands of years ago, ancient civilizations laid down the foundations of science.',
+    sampleAudioTamil: 'ஆயிரக்கணக்கான ஆண்டுகளுக்கு முன், பண்டைய நாகரிகங்கள் அறிவியலின் அடித்தளத்தை உருவாக்கின.',
+    geminiVoice: 'Fenrir',
+    description: 'Deep resonant voice with classical Tamil diction, ideal for wildlife films and historical features.',
+  },
+  {
+    id: 'priya',
+    name: 'Priya',
+    tamilName: 'பிரியா',
+    gender: 'female',
+    tone: 'Clear, Professional & Contemporary (Business, News, Education)',
+    sampleAudioText: 'Artificial intelligence is fundamentally reshaping how global businesses operate.',
+    sampleAudioTamil: 'செயற்கை நுண்ணறிவு உலகளாவிய வணிக செயல்பாடுகளை முற்றிலும் புதிய முறையில் மாற்றுகிறது.',
+    geminiVoice: 'Zephyr',
+    description: 'Crisp corporate and informative tone, great for online courses and business presentations.',
+  },
+];
+
+export const PRESET_SAMPLE_JOBS: DubbingJob[] = [
+  {
+    id: 'job-sample-tech-01',
+    userId: 'usr-demo-1',
+    title: 'Next-Gen Smartphone Camera & Optical Zoom Test',
+    sourceType: 'youtube',
+    sourceUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    thumbnailUrl: '/src/assets/images/hero_tamildub_studio_1793513514432.jpg',
+    duration: 15,
+    fileSizeMb: 14.8,
+    sourceLanguage: 'en',
+    targetLanguage: 'ta',
+    status: 'completed',
+    progress: 100,
+    currentStepIndex: 16,
+    qualityScore: 98,
+    createdAt: '2026-10-31T18:30:00Z',
+    updatedAt: '2026-10-31T18:31:45Z',
+    steps: PIPELINE_STEPS_TEMPLATE.map(step => ({ ...step, status: 'completed' })),
+    speakers: [
+      {
+        id: 'spk-1',
+        name: 'Presenter (Marcus)',
+        gender: 'male',
+        tamilVoiceName: 'Karthik',
+        pitchAdjust: 0,
+        speedMultiplier: 1.0,
+      },
+      {
+        id: 'spk-2',
+        name: 'Technical Engineer (Elena)',
+        gender: 'female',
+        tamilVoiceName: 'Priya',
+        pitchAdjust: 0,
+        speedMultiplier: 1.0,
+      }
+    ],
+    segments: [
+      {
+        id: 'seg-1',
+        startTime: 0.0,
+        endTime: 3.5,
+        speakerId: 'spk-1',
+        speakerName: 'Marcus',
+        originalText: 'Welcome back to the studio. Today we are testing high-dynamic-range video rendering.',
+        tamilText: 'மீண்டும் நமது ஸ்டுடியோவிற்கு வரவேற்கிறேன். இன்று நாம் உயர்-டைனமிக்-ரேஞ்ச் வீடியோ தரத்தை சோதிக்கிறோம்.',
+        romanizedTamil: 'Meendum namathu studiovirkku varaverkiren. Indru naam uyar-dynamic-range video tharathai sothikkirom.',
+        emotion: 'enthusiastic',
+        confidenceScore: 0.99
+      },
+      {
+        id: 'seg-2',
+        startTime: 3.6,
+        endTime: 7.8,
+        speakerId: 'spk-2',
+        speakerName: 'Elena',
+        originalText: 'Notice how the shadow details remain crisp even under extreme direct illumination.',
+        tamilText: 'கடுமையான நேரடி வெளிச்சத்திலும் கூட நிழல் விவரங்கள் எவ்வளவு துல்லியமாக இருக்கின்றன என்று கவனியுங்கள்.',
+        romanizedTamil: 'Kadu-maiyana neradi velichathilum kooda nizhal vivarangal evvalavu thulliyamaga irukkindrana endru kavaniyungal.',
+        emotion: 'neutral',
+        confidenceScore: 0.97
+      },
+      {
+        id: 'seg-3',
+        startTime: 7.9,
+        endTime: 11.5,
+        speakerId: 'spk-1',
+        speakerName: 'Marcus',
+        originalText: 'This neural processing pipeline dynamically syncs audio with lip movement at millisecond accuracy.',
+        tamilText: 'இந்த நியூரல் செயலாக்க அமைப்பு உதட்டசைவுக்கு ஏற்ப ஆடியோவை மில்லி விநாடி துல்லியத்துடன் ஒத்திசைக்கிறது.',
+        romanizedTamil: 'Indha neural seyalakka amaippu uthattasaivukku erpa audiova millivinadi thulliyathudan othisaikirathu.',
+        emotion: 'enthusiastic',
+        confidenceScore: 0.98
+      },
+      {
+        id: 'seg-4',
+        startTime: 11.6,
+        endTime: 15.0,
+        speakerId: 'spk-2',
+        speakerName: 'Elena',
+        originalText: 'The result is a completely authentic Tamil listening experience for global viewers.',
+        tamilText: 'இதன் மூலம் உலகளாவிய பார்வையாளர்களுக்கு உண்மையான இயல்பான தமிழ் கேட்கும் அனுபவம் கிடைக்கிறது.',
+        romanizedTamil: 'Idhan moolam ulagalaaviya paarvaiyaalargalukku unmaiyaana iyalbaana Tamil ketkum anubavam kidaikkirathu.',
+        emotion: 'calm',
+        confidenceScore: 0.99
+      }
+    ]
+  },
+  {
+    id: 'job-sample-wildlife-02',
+    userId: 'usr-demo-1',
+    title: 'Silent Predators: Bengal Tiger Hunting in the Deep Wilderness',
+    sourceType: 'youtube',
+    sourceUrl: 'https://www.youtube.com/watch?v=sample-wildlife',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+    thumbnailUrl: '/src/assets/images/video_sample_thumbnail_1793513513794.jpg',
+    duration: 18,
+    fileSizeMb: 19.2,
+    sourceLanguage: 'fr',
+    targetLanguage: 'ta',
+    status: 'completed',
+    progress: 100,
+    currentStepIndex: 16,
+    qualityScore: 99,
+    createdAt: '2026-10-31T17:15:00Z',
+    updatedAt: '2026-10-31T17:17:10Z',
+    steps: PIPELINE_STEPS_TEMPLATE.map(step => ({ ...step, status: 'completed' })),
+    speakers: [
+      {
+        id: 'spk-narrator',
+        name: 'Narrator (Jean-Pierre)',
+        gender: 'male',
+        tamilVoiceName: 'Selvan',
+        pitchAdjust: -1,
+        speedMultiplier: 0.95,
+      }
+    ],
+    segments: [
+      {
+        id: 'seg-w-1',
+        startTime: 0.0,
+        endTime: 5.2,
+        speakerId: 'spk-narrator',
+        speakerName: 'Jean-Pierre',
+        originalText: 'Dans les profondeurs silencieuses de la forêt tropicale, chaque mouvement compte.',
+        tamilText: 'அடர்ந்த வெப்பமண்டல காட்டின் அமைதியான ஆழத்தில், விலங்குகளின் ஒவ்வொரு அசைவும் மிக முக்கியமானது.',
+        romanizedTamil: 'Adarndha veppamandala kaattin amaidhiyana aazhathil, vilangukalin ovvoru asaivum miga mukkiyamanadhu.',
+        emotion: 'serious',
+        confidenceScore: 0.99
+      },
+      {
+        id: 'seg-w-2',
+        startTime: 5.3,
+        endTime: 11.0,
+        speakerId: 'spk-narrator',
+        speakerName: 'Jean-Pierre',
+        originalText: 'Le tigre s\'approche avec une patience millénaire, dissimulé par la canopée dorée.',
+        tamilText: 'தங்க நிற மரக்கூட்டங்களுக்குள் ஒளிந்து கொண்டு, புலி ஆயிரம் ஆண்டு பொறுமையுடன் மெதுவாக முன்னேறுகிறது.',
+        romanizedTamil: 'Thanga nira marakoottangalukkul olindhu kondu, puli aayiram aandu porumaiyudan medhuvaaga munnerugiradhu.',
+        emotion: 'dramatic',
+        confidenceScore: 0.98
+      },
+      {
+        id: 'seg-w-3',
+        startTime: 11.1,
+        endTime: 17.8,
+        speakerId: 'spk-narrator',
+        speakerName: 'Jean-Pierre',
+        originalText: 'Ici, la nature règne en maître absolu, dictant la loi du plus adapté.',
+        tamilText: 'இங்கு, இயற்கை முழுமையான ஆதிக்கத்தை செலுத்துகிறது, வாழத் தகுதியுள்ள உயிர்களின் சட்டத்தை வகுக்கிறது.',
+        romanizedTamil: 'Ingu, iyarkai muzhumaiyaana aadhikkathai seluthugiradhu, vaazhath thagudhiyulla uyirkalin sattathai vagukkiradhu.',
+        emotion: 'serious',
+        confidenceScore: 0.99
+      }
+    ]
+  }
+];

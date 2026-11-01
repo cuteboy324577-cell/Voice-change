@@ -1,0 +1,6 @@
+{
+  "name": "TamilDub AI",
+  "description": "AI-Powered YouTube Video Tamil Dubbing & Voice Translation Platform. Every Language. One Tamil Voice.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
